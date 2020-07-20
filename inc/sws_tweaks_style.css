@@ -1,0 +1,26 @@
+/* COLLAPSING STYLES
+<div class='sws-accordion'>
+    <input type="checkbox" id="toggle1" class="sws-acc-ck" /><label for="toggle1">First Item</label>
+        <div class='sws-acc-content'>Lorem ipsum...</div>
+</div>
+<div class='sws-accordion'>
+    <input type="checkbox" id="toggle2" class="sws-acc-ck" /><label for="toggle2">Second Item</label>
+        <div class='sws-acc-content'>Lorem ipsum... second version</div>
+</div>
+NOTE that IDs have to match for checkbox and label. Otherwise, it's pretty easy 
+*/
+.sws-acc-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: height 400ms linear;
+    margin-bottom: .5rem;
+}
+.sws-acc-ck {
+    display: none !important;
+}
+.sws-accordion > input:checked ~ .sws-acc-content {
+    max-height: 100vh;
+}
+.sws-accordion > input:checked ~ label:before,
+.sws-accordion > input:checked ~ label:before { content: '\25bc'; padding-right: 1rem; }
+.sws-accordion > label:before { content: '\25b6'; padding-right: 1rem; }
