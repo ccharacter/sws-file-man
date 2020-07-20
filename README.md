@@ -1,14 +1,7 @@
-# sws-wp-tweaks
+# sws-file-man
 
-This is a catch-all plugin for tweaks that I want to make to most or all of my sites. So far it includes:
+This is a plugin for managing file uploads. It allows for:
 
-* Increase default max upload size
-* Fix bug in password reset message
-* Fix bug in iThemes Security font path
-* Disable new user notifications
-* Disable password change notifications
-* Disable xml-rpc
-* Add server tag to bottom of Home & About (blue- or green-)
-* Fail validation for any Gravity Forms field containing HTML or non-English characters
-* Code snippet for duplicating pages
-* Styling (and shortcode) for automated accordions
+* Uploading via Gravity Forms
+* Displaying uploads by tag
+* Commenting on files 
