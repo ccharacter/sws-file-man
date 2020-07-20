@@ -35,4 +35,52 @@ add_action('wp_enqueue_scripts', 'sws_file_man_enqueue_script');
 
 //$optVals = get_option( 'sws_wp_tweaks_options' );
 
+// CPT for FILES
+
+add_action( 'init', 'sws_file_man_cpt_init' );
+function sws_file_man_cpt_init() {
+	$labelsCL = array(
+ 		'name' => 'Documents',
+    	'singular_name' => 'Document',
+    	'add_new' => 'Add New Document',
+    	'add_new_item' => 'Add New Document',
+    	'edit_item' => 'Edit Document',
+    	'new_item' => 'New Document',
+    	'all_items' => 'All Documents',
+    	'view_item' => 'View Documents',
+    	'search_items' => 'Search Documents',
+    	'not_found' =>  'No Document',
+    	'not_found_in_trash' => 'No Documents found in Trash', 
+    	'parent_item_colon' => '',
+    	'menu_name' => 'MyDocs'
+    );
+    //register post type
+	register_post_type( 'myfile', array(
+		'labels' => $labelsCL,
+		'hierarchical' => true,
+		'has_archive' => true,
+ 		'public' => true,
+		'publicly_queryable' => true,
+		'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail','page-attributes' ),
+		'taxonomies' => array('post_tag','category'),	
+		'exclude_from_search' => false,
+		'capability_type' => 'post',
+		'menu_icon' => 'dashicons-media-document',
+		'rewrite' => array( 'slug' => 'myfiles' ),
+		)
+	);
+
+
+}
+
+function sws_fileman_rewrite_flush() {
+    sws_file_man_cpt_init();
+    flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'sws_fileman_rewrite_flush' );
+
+
+
+
+
 ?>
