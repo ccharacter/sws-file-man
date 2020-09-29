@@ -158,8 +158,8 @@ function sws_manage_items_columns($columns){
 	return array(
 	 'cb' => '<input type="checkbox" />',
 	 'title' => __('Title'),
-	 'custom_column_1' => __('Item Type'),
-	 'post_id' =>__( 'Post ID'),
+	 'item_type' => __('Item Type'),
+	 'categories' =>__( 'Categories'),
 	 'date' =>__( 'Date')
 	 );
 	return $columns;
