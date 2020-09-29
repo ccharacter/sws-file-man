@@ -103,23 +103,29 @@ function sws_manage_items_cpt_init() {
 }
 
 
-add_filter( 'parse_query', 'prefix_parse_filter' );
-function  prefix_parse_filter($query) {
-   global $pagenow;
-   $current_page = isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
-
-   if ( is_admin() && 
-     'item' == $current_page &&
-     'edit.php' == $pagenow && 
-      isset( $_GET['mgr_type'] ) && 
-      $_GET['mgr_type'] != '') {
-
-    $filter_name = $_GET['mgr_type'];
-    $query->query_vars['meta_key'] = 'mgr_type';
-    $query->query_vars['meta_value'] = $filter_name;
-    $query->query_vars['meta_compare'] = '=';
-  }
+/**
+ * Filter slugs
+ * @since 1.1.0
+ * @return void
+ */
+function sws_manage_filter_by() {
+  global $typenow;
+  global $wp_query;
+    if ( $typenow == 'item' ) { // Your custom post type slug
+      $values = array( 'doc'=>"Documents", 'vid'=>"Videos", 'link'=>"Links" ); // Options for the filter select field
+      $current_val = '';
+      if( isset( $_GET['item_type'] ) ) {
+        $current_val = $_GET['item_type']; // Check if option has been selected
+      } ?>
+      <select name="item_type" id="item_type">
+        <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All', 'wisdom-plugin' ); ?></option>
+        <?php foreach( $values as $key=>$value ) { ?>
+          <option value="$key" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $key ); ?></option>
+        <?php } ?>
+      </select>
+  <?php }
 }
+add_action( 'restrict_manage_posts', 'sws_manage_filter_by' );
 
 
 function sws_fileman_rewrite_flush() {
