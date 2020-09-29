@@ -21,7 +21,7 @@ function sws_manage_items_create_acfgroup() {
 	$test=sws_manage_items_ck_acfgroup_exists();
 	if (function_exists('acf_add_local_field_group')  && (!$test)) {
 		error_log("++++++++++++++TEST++++++++++++++++",0);
-		acf_add_local_field_group(array(
+		/*acf_add_local_field_group(array(
 			'key' => 'sws_manage_items_field_group',
 			'title' => 'Manage Items',
 			'fields' => array(
@@ -221,6 +221,27 @@ function sws_manage_items_create_acfgroup() {
 			),
 			'active' => true,
 			'description' => '',
+		));*/
+		acf_add_local_field_group(array(
+			'key' => 'group_1',
+			'title' => 'My Group',
+			'fields' => array (
+				array (
+					'key' => 'field_1',
+					'label' => 'Sub Title',
+					'name' => 'sub_title',
+					'type' => 'text',
+				)
+			),
+			'location' => array (
+				array (
+					array (
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'post',
+					),
+				),
+			),
 		));
 
 	} else { error_log("=======================ERROR!================",0); }
