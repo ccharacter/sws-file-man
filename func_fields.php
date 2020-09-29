@@ -1,6 +1,6 @@
 <?php
 
-function sws_manage_items_ck_acfgroup_exists($value, $type='acf-field-group',$title="sws_manage_items_field_group") {
+function sws_manage_items_ck_acfgroup_exists($type='acf-field-group',$title="sws_manage_items_field_group") {
 	$exists = false;
 	$field_groups = get_posts(array('post_type'=>'acf-field-group'));
 	if ($field_groups) {
