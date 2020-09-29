@@ -1,12 +1,14 @@
 <?php
 
-function sws_manage_items_ck_acfgroup_exists($value, $type='post_title') {
+function sws_manage_items_ck_acfgroup_exists($value, $type='acf-field-group',$title="sws_manage_items_field_group") {
 	$exists = false;
-	if ($field_groups = get_posts(array('post_type'=>'acf-field-group'))) {
+	$field_groups = get_posts(array('post_type'=>'acf-field-group'));
+	if ($field_groups) {
 		error_log(print_r($field_groups,true),0);
 		foreach ($field_groups as $field_group) {
-			if ($field_group->$type == $value) {
+			if (($field_group->post_type == $type) && ($field_group->post_title==$title)) {
 				$exists = true;
+				error_log($type."|".$title,0);
 			}
 		}
 	}
