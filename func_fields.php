@@ -9,6 +9,7 @@ function sws_manage_items_ck_acfgroup_exists($value, $type='post_title') {
 			}
 		}
 	}
+	error_log($value." Exists!",0);
 	return $exists;
 }
 
