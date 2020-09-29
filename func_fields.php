@@ -3,6 +3,7 @@
 function sws_manage_items_ck_acfgroup_exists($value, $type='post_title') {
 	$exists = false;
 	if ($field_groups = get_posts(array('post_type'=>'acf-field-group'))) {
+		error_log(print_r($field_groups,true),0);
 		foreach ($field_groups as $field_group) {
 			if ($field_group->$type == $value) {
 				$exists = true;
