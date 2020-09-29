@@ -118,7 +118,7 @@ function sws_manage_filter_by() {
         $current_val = $_GET['item_type']; // Check if option has been selected
       } ?>
       <select name="item_type" id="item_type">
-        <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All', 'sws-manage-items' ); ?></option>
+        <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All Types', 'sws-manage-items' ); ?></option>
         <?php foreach( $values as $key=>$value ) { ?>
           <option value="$key" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $value ); ?></option>
         <?php } ?>
@@ -126,6 +126,24 @@ function sws_manage_filter_by() {
   <?php }
 }
 add_action( 'restrict_manage_posts', 'sws_manage_filter_by' );
+
+/**
+ * Update query
+ * @since 1.1.0
+ * @return void
+ */
+function sws_manage_items_sort_by_slug( $query ) {
+  global $pagenow;
+  // Get the post type
+  $post_type = isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
+  if ( is_admin() && $pagenow=='edit.php' && $post_type == 'item' && isset( $_GET['slug'] ) && $_GET['slug'] !='all' ) {
+    $query->query_vars['meta_key'] = 'mgr_type';
+    $query->query_vars['meta_value'] = $_GET['slug'];
+    $query->query_vars['meta_compare'] = '=';
+  }
+}
+add_filter( 'parse_query', 'sws_manage_items_sort_by_slug' );
+
 
 
 function sws_fileman_rewrite_flush() {
