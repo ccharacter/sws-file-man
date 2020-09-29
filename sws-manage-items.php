@@ -151,7 +151,7 @@ add_filter('manage_item_posts_columns', function($columns) {
 	$rem=$columns['date'];
 	unset($columns['date']);
 	$columns['item_type'] = __('Item Type', 'sws_manage_items');
-	$columns['date'] = $rem);
+	$columns['date'] = $rem;
 	return $columns;
 }
 );
