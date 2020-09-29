@@ -149,6 +149,7 @@ add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 add_filter('manage_item_posts_columns', function($columns) {
 	return array_merge($columns, ['item_type' => __('Item Type', 'sws_manage_items')]);
 }
+);
 
 // this fills in the columns that were created with each individual post's value
 add_action('manage_item_posts_custom_column', function($column_key, $post_id) {
