@@ -164,13 +164,13 @@ function sws_manage_items_columns($columns){
 	 );
 	return $columns;
 }
-/*
+
 // this fills in the columns that were created with each individual post's value
-add_action( 'manage_item_post_columns' , array($this,'sws_manage_items_fill_columns'), 10, 2 );
+add_action( 'manage_item_post_columns' , 'sws_manage_items_fill_columns', 10, 2 );
 function sws_manage_items_fill_columns( $column, $post_id ) {
 		// Fill in the columns with meta box info associated with each post
 	switch ( $column ) {
-	case 'custom_column_1' :
+	case 'item_type' :
 		echo get_post_meta( $post_id , 'mgr_type' , true ); 
 		break;
 	case 'custom_column_2' :
@@ -181,7 +181,7 @@ function sws_manage_items_fill_columns( $column, $post_id ) {
 			break;
 		}
 }
-*/
+
 
 
 function sws_fileman_rewrite_flush() {
