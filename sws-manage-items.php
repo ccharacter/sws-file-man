@@ -171,6 +171,11 @@ add_action('manage_item_posts_custom_column', function($column_key, $post_id) {
 	}
 }, 10, 2);
 
+// make it sortable
+add_filter('manage_item_sortable_columns', function($columns) {
+	$columns['item_type'] = 'item_type';
+	return $columns;
+});
 
 function sws_fileman_rewrite_flush() {
     sws_manage_items_cpt_init();
