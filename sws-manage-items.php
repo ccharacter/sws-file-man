@@ -142,7 +142,7 @@ function sws_manage_items_sort_by_type( $query ) {
     $query->query_vars['meta_compare'] = '=';
   }
 }
-add_filter( 'parse_query', 'sws_manage_items_sort_by_slug' );
+add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 
 
 
