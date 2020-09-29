@@ -37,6 +37,13 @@ add_action('wp_enqueue_scripts', 'sws_manage_items_enqueue_script');
 
 //$optVals = get_option( 'sws_wp_tweaks_options' );
 
+/* NOTES TO SELF
+--add categories
+--add ACF Group
+--add templates
+--add options page with shortcode descriptions
+*/
+
 
 /**
  * Checks if Gravity Forms is active
@@ -94,6 +101,26 @@ function sws_manage_items_cpt_init() {
 
 
 }
+
+
+add_filter( 'parse_query', 'prefix_parse_filter' );
+function  prefix_parse_filter($query) {
+   global $pagenow;
+   $current_page = isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
+
+   if ( is_admin() && 
+     'item' == $current_page &&
+     'edit.php' == $pagenow && 
+      isset( $_GET['mgr_type'] ) && 
+      $_GET['mgr_type'] != '') {
+
+    $filter_name = $_GET['mgr_type'];
+    $query->query_vars['meta_key'] = 'mgr_type';
+    $query->query_vars['meta_value'] = $filter_name;
+    $query->query_vars['meta_compare'] = '=';
+  }
+}
+
 
 function sws_fileman_rewrite_flush() {
     sws_manage_items_cpt_init();
