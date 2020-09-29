@@ -132,13 +132,13 @@ add_action( 'restrict_manage_posts', 'sws_manage_filter_by' );
  * @since 1.1.0
  * @return void
  */
-function sws_manage_items_sort_by_slug( $query ) {
+function sws_manage_items_sort_by_type( $query ) {
   global $pagenow;
   // Get the post type
   $post_type = isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
-  if ( is_admin() && $pagenow=='edit.php' && $post_type == 'item' && isset( $_GET['slug'] ) && $_GET['slug'] !='all' ) {
+  if ( is_admin() && $pagenow=='edit.php' && $post_type == 'item' && isset( $_GET['item_type'] ) && $_GET['item_type'] !='all' ) {
     $query->query_vars['meta_key'] = 'mgr_type';
-    $query->query_vars['meta_value'] = $_GET['slug'];
+    $query->query_vars['meta_value'] = $_GET['item_type'];
     $query->query_vars['meta_compare'] = '=';
   }
 }
