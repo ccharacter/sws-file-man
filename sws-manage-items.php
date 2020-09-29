@@ -146,7 +146,7 @@ add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 
 
 // Update the columns shown on the custom post type edit.php view - so we also have custom columns
-add_filter('manage_item_columns' , array($this,'sws_manage_items_columns'));
+add_filter('manage_item_posts_columns' , array($this,'sws_manage_items_columns'));
 public function sws_manage_items_columns($columns){
 // Remove Author and Comments from Columns and Add custom column 1, custom column 2 and Post Id
 	unset(
@@ -166,7 +166,7 @@ public function sws_manage_items_columns($columns){
 }
 
 // this fills in the columns that were created with each individual post's value
-add_action( 'manage_item_columns' , array($this,'sws_manage_items_fill_columns'), 10, 2 );
+add_action( 'manage_item_post_columns' , array($this,'sws_manage_items_fill_columns'), 10, 2 );
 public function sws_manage_items_fill_columns( $column, $post_id ) {
 		// Fill in the columns with meta box info associated with each post
 	switch ( $column ) {
