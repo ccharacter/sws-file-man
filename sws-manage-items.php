@@ -150,8 +150,8 @@ add_filter('manage_item_posts_columns', function($columns) {
 	unset($columns['tags']);
 	$rem=$columns['date'];
 	unset($columns['date']);
-	array_merge($columns, ['item_type' => __('Item Type', 'sws_manage_items')]);
-	array_merge($columns, $rem);
+	$columns['item_type'] = __('Item Type', 'sws_manage_items');
+	$columns['date'] = $rem);
 	return $columns;
 }
 );
