@@ -19,7 +19,7 @@ function sws_manage_items_ck_acfgroup_exists($type='acf-field-group',$name="sws_
 add_action( 'acf/init', 'sws_manage_items_create_acfgroup' );
 function sws_manage_items_create_acfgroup() { 
 	$test=sws_manage_items_ck_acfgroup_exists();
-	if (function_exists('acf_add_local_field_group')  && ($test==false)) {
+	if (function_exists('acf_add_local_field_group')  && (!$test)) {
 
 		acf_add_local_field_group(array(
 			'key' => 'sws_manage_items_field_group',
