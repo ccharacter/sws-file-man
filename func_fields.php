@@ -11,7 +11,8 @@ function sws_manage_items_ck_acfgroup_exists($type='acf-field-group',$name="sws_
 				error_log($type."|".$name. " EXISTS!",0);
 			}
 		}
-	}
+	} 
+	if (!$exists) { error_log ($type."|".$name. " DOES NOT EXIST!",0); }
 	return $exists;
 }
 
