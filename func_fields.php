@@ -4,20 +4,20 @@ function sws_manage_items_ck_acfgroup_exists($type='acf-field-group',$name="sws_
 	$exists = false;
 	$field_groups = get_posts(array('post_type'=>'acf-field-group'));
 	if ($field_groups) {
-		error_log(print_r($field_groups,true),0);
+		//error_log(print_r($field_groups,true),0);
 		foreach ($field_groups as $field_group) {
 			if (($field_group->post_type == $type) && ($field_group->post_name==$name)) {
 				$exists = true;
-				error_log($type."|".$name. " EXISTS!",0);
+				//error_log($type."|".$name. " EXISTS!",0);
 			}
 		}
 	} 
-	if (!$exists) { error_log ($type."|".$name. " DOES NOT EXIST!",0); }
+	//if (!$exists) { error_log ($type."|".$name. " DOES NOT EXIST!",0); }
 	return $exists;
 }
 
 function sws_manage_items_create_acfgroup() { 
-	if (( function_exists('acf_add_local_field_group') ) && (!(sws_manage_items_ck_acfgroup_exists('sws_manage_items_field_group')))) :
+	if (( function_exists('acf_add_local_field_group') ) && (!(sws_manage_items_ck_acfgroup_exists()))) :
 
 	acf_add_local_field_group(array(
 		'key' => 'sws_manage_items_field_group',
