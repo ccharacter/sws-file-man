@@ -167,7 +167,7 @@ function sws_manage_items_columns($columns){
 
 // this fills in the columns that were created with each individual post's value
 add_action( 'manage_item_post_columns' , array($this,'sws_manage_items_fill_columns'), 10, 2 );
-public function sws_manage_items_fill_columns( $column, $post_id ) {
+function sws_manage_items_fill_columns( $column, $post_id ) {
 		// Fill in the columns with meta box info associated with each post
 	switch ( $column ) {
 	case 'custom_column_1' :
