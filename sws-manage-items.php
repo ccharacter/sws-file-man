@@ -148,7 +148,6 @@ add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 // Update the columns shown on the custom post type edit.php view - so we also have custom columns
 add_filter('manage_item_posts_columns', function($columns) {
 	return array_merge($columns, ['item_type' => __('Item Type', 'sws_manage_items')]);
-});
 }
 
 // this fills in the columns that were created with each individual post's value
