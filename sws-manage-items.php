@@ -118,9 +118,9 @@ function sws_manage_filter_by() {
         $current_val = $_GET['item_type']; // Check if option has been selected
       } ?>
       <select name="item_type" id="item_type">
-        <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All', 'wisdom-plugin' ); ?></option>
+        <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All', 'sws-manage-items' ); ?></option>
         <?php foreach( $values as $key=>$value ) { ?>
-          <option value="$key" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $key ); ?></option>
+          <option value="$key" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $value ); ?></option>
         <?php } ?>
       </select>
   <?php }
