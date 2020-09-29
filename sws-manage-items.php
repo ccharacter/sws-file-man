@@ -52,6 +52,9 @@ function sws_manage_items_activate() {
   if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
     include_once( ABSPATH . '/wp-admin/includes/plugin.php' );
   }
+  
+	if ( function_exists('acf_add_local_field_group') { sws_manage_items_create_acfgroup(); }
+  
   if ( current_user_can( 'activate_plugins' ) && ! class_exists( 'GFCommon' ) ) {
     // Deactivate the plugin.
     deactivate_plugins( plugin_basename( __FILE__ ) );
