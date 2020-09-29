@@ -147,6 +147,7 @@ add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 
 // Update the columns shown on the custom post type edit.php view - so we also have custom columns
 add_filter('manage_item_posts_columns', function($columns) {
+	unset($columns['tags']);
 	return array_merge($columns, ['item_type' => __('Item Type', 'sws_manage_items')]);
 }
 );
@@ -156,7 +157,12 @@ add_action('manage_item_posts_custom_column', function($column_key, $post_id) {
 	if ($column_key == 'item_type') {
 		$item_type = get_post_meta($post_id, 'mgr_type', true);
 		if ($item_type) {
-			echo $item_type;
+			switch($item_type) {
+				case("doc"): echo "Document"; break;
+				case("link"): echo "Link"; break;
+				case("vid"): echo "Video"; break;
+				default: break;
+			}
 		}
 	}
 }, 10, 2);
