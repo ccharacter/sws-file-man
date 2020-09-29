@@ -150,10 +150,7 @@ add_filter('manage_item_posts_columns' , 'sws_manage_items_columns');
 function sws_manage_items_columns($columns){
 // Remove Author and Comments from Columns and Add custom column 1, custom column 2 and Post Id
 	unset(
-		$columns['tags'],
-		$columns['wpseo-title'],
-		$columns['wpseo-metadesc'],
-		$columns['wpseo-focuskw']
+		$columns['tags']
 	);
 	return array(
 	 'cb' => '<input type="checkbox" />',
@@ -169,17 +166,9 @@ function sws_manage_items_columns($columns){
 add_action( 'manage_item_post_columns' , 'sws_manage_items_fill_columns', 10, 2 );
 function sws_manage_items_fill_columns( $column, $post_id ) {
 		// Fill in the columns with meta box info associated with each post
-	switch ( $column ) {
-	case 'item_type' :
+	if ( $column=='item_type') {
 		echo get_post_meta( $post_id , 'mgr_type' , true ); 
-		break;
-	case 'custom_column_2' :
-		echo get_post_meta( $post_id , $this->plugin_name.'_custom_column_2' , true ); 
-			break;
-	case 'post_id' :
-		echo $post_id; 
-			break;
-		}
+	}
 }
 
 
