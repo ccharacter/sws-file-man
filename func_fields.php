@@ -1,19 +1,19 @@
 <?php
 
 function sws_manage_items_ck_acfgroup_exists($type='acf-field-group',$name="sws_manage_items_field_group") {
-	$exists = false;
+	
 	$field_groups = get_posts(array('post_type'=>'acf-field-group'));
 	if ($field_groups) {
 		//error_log(print_r($field_groups,true),0);
 		foreach ($field_groups as $field_group) {
 			if (($field_group->post_type == $type) && ($field_group->post_name==$name)) {
-				$exists = true;
 				error_log($type."|".$name. " EXISTS!",0);
+				return true;
 			}
 		}
 	} 
-	if (!$exists) { error_log ($type."|".$name. " DOES NOT EXIST!",0); }
-	return $exists;
+	error_log ($type."|".$name. " DOES NOT EXIST!",0); 
+	return false;
 }
 
 add_action( 'acf/init', 'sws_manage_items_create_acfgroup' );
