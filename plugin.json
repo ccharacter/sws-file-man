@@ -1,9 +1,9 @@
 {
-	"name": "SWS File Manager",
+	"name": "SWS Manage Items",
 	"version": "1.0",
-	"download_url": "https://github.com/ccharacter/sws-file-man/archive/v1.0.zip",
+	"download_url": "https://github.com/ccharacter/sws-manage-items/archive/v1.0.zip",
 
-	"homepage": "https://ccharacter.com/custom-plugins/sws-file-man/",
+	"homepage": "https://ccharacter.com/custom-plugins/sws-manage-items/",
 	"requires": "4.0",
 	"tested": "5.4.1",
 	"last_updated": "2020-07-19",
@@ -13,7 +13,7 @@
 	"author_homepage": "http://ccharacter.com/",
 
 	"sections": {
-		"description": "This plugin is a file upload manager. It allows for...<ul style='line-height:.8'><li>Uploading via Gravity Forms</li><li>Displaying uploads by tag</li><li>Commenting on files</li></ul>"
+		"description": "This plugin is creates a utility for managing uploads, videos, and links. It allows for...<ul style='line-height:.8'><li>Uploading via Gravity Forms</li><li>Displaying uploads by tag</li><li>Commenting on files</li></ul>"
 	}
 
 }

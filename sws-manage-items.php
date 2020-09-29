@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       SWS File Manager
- * Plugin URI:        https://ccharacter.com/custom-plugins/sws-file-man/
- * Description:       Manage and display uploaded files
+ * Plugin Name:       SWS ManageItems
+ * Plugin URI:        https://ccharacter.com/custom-plugins/sws-manage-items/
+ * Description:       Manage and display uploaded files, links, or videos
  * Version:           1.0
  * Requires at least: 5.2
  * Requires PHP:      5.5
@@ -11,34 +11,56 @@
  * Author URI:        https://ccharacter.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       sws-file-man
+ * Text Domain:       sws-manage-items
  */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once plugin_dir_path(__FILE__).'inc/plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://raw.githubusercontent.com/ccharacter/sws-file-man/main/plugin.json',
+	'https://raw.githubusercontent.com/ccharacter/sws-manage-items/main/plugin.json',
 	__FILE__,
-	'sws_file-man'
+	'sws_manage-items'
 );
+
+require_once plugin_dir_path(__FILE__).'func_fields.php';
 
 //require_once plugin_dir_path(__FILE__).'options_page.php';
 //require_once plugin_dir_path(__FILE__).'duplicate_pages.php';
 
 
 // add stylesheets
-function sws_file_man_enqueue_script() {   
+function sws_manage_items_enqueue_script() {   
  	//wp_enqueue_style( 'swsTweakStyles', plugin_dir_url(__FILE__).'inc/sws_tweaks_style.css');
 }
-add_action('wp_enqueue_scripts', 'sws_file_man_enqueue_script');
+add_action('wp_enqueue_scripts', 'sws_manage_items_enqueue_script');
 
 //$optVals = get_option( 'sws_wp_tweaks_options' );
 
+
+/**
+ * Checks if Gravity Forms is active
+ */
+function sws_manage_items_activate() {
+  if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+    include_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+  }
+  if ( current_user_can( 'activate_plugins' ) && ! class_exists( 'GFCommon' ) ) {
+    // Deactivate the plugin.
+    deactivate_plugins( plugin_basename( __FILE__ ) );
+    // Throw an error in the WordPress admin console.
+    $error_message = '<p style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,Oxygen-Sans,Ubuntu,Cantarell,\'Helvetica Neue\',sans-serif;font-size: 13px;line-height: 1.5;color:#444;">' . esc_html__( 'This plugin requires ', 'gravityforms' ) . '<a href="' . esc_url( 'https://gravityforms.com/' ) . '">Gravity Forms</a>' . esc_html__( ' plugin to be active, as well as the <strong>Advanced Post Creation</strong> add-on.', 'gravityforms' ) . '</p>';
+    die( $error_message ); // WPCS: XSS ok.
+  }
+}
+register_activation_hook( __FILE__, 'sws_manage_items_activate' );
+
+
+
 // CPT for FILES
 
-add_action( 'init', 'sws_file_man_cpt_init' );
-function sws_file_man_cpt_init() {
+add_action( 'init', 'sws_manage_items_cpt_init' );
+function sws_manage_items_cpt_init() {
 	$labelsCL = array(
  		'name' => 'Documents',
     	'singular_name' => 'Document',
@@ -74,7 +96,7 @@ function sws_file_man_cpt_init() {
 }
 
 function sws_fileman_rewrite_flush() {
-    sws_file_man_cpt_init();
+    sws_manage_items_cpt_init();
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'sws_fileman_rewrite_flush' );
