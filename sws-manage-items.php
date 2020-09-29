@@ -20,7 +20,7 @@ require_once plugin_dir_path(__FILE__).'inc/plugin-update-checker/plugin-update-
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://raw.githubusercontent.com/ccharacter/sws-manage-items/main/plugin.json',
 	__FILE__,
-	'sws_manage-items'
+	'sws_manage_items'
 );
 
 require_once plugin_dir_path(__FILE__).'func_fields.php';
@@ -86,7 +86,7 @@ function sws_manage_items_cpt_init() {
     //register post type
 	register_post_type( 'item', array(
 		'labels' => $labelsCL,
-		'hierarchical' => true,
+		'hierarchical' => false,
 		'has_archive' => true,
  		'public' => true,
 		'publicly_queryable' => true,
@@ -146,25 +146,20 @@ add_filter( 'parse_query', 'sws_manage_items_sort_by_type' );
 
 
 // Update the columns shown on the custom post type edit.php view - so we also have custom columns
-add_filter('manage_item_posts_columns' , 'sws_manage_items_columns');
-function sws_manage_items_columns($columns){
-// Remove Author and Comments from Columns and Add custom column 1, custom column 2 and Post Id
-	unset(
-		$columns['tags']
-	);
-	$columns['item_type'] = 'Item Type';
-	return $columns;
+add_filter('manage_item_posts_columns', function($columns) {
+	return array_merge($columns, ['item_type' => __('Item Type', 'sws_manage_items')]);
+});
 }
 
 // this fills in the columns that were created with each individual post's value
-add_action( 'manage_item_post_columns' , 'sws_manage_items_fill_columns', 10, 2 );
-function sws_manage_items_fill_columns( $column, $post_id ) {
-		// Fill in the columns with meta box info associated with each post
-	if ( $column=='item_type') {
-		echo get_post_meta( $post_id , 'mgr_type' , true ); 
+add_action('manage_item_posts_custom_column', function($column_key, $post_id) {
+	if ($column_key == 'item_type') {
+		$item_type = get_post_meta($post_id, 'mgr_type', true);
+		if ($item_type) {
+			echo $item_type;
+		}
 	}
-}
-
+}, 10, 2);
 
 
 function sws_fileman_rewrite_flush() {
