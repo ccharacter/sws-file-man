@@ -152,13 +152,7 @@ function sws_manage_items_columns($columns){
 	unset(
 		$columns['tags']
 	);
-	return array(
-	 'cb' => '<input type="checkbox" />',
-	 'title' => __('Title'),
-	 'item_type' => __('Item Type'),
-	 'categories' =>__( 'Categories'),
-	 'date' =>__( 'Date')
-	 );
+	$columns['item_type'] = 'Item Type';
 	return $columns;
 }
 
