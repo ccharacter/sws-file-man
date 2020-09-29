@@ -120,7 +120,7 @@ function sws_manage_filter_by() {
       <select name="item_type" id="item_type">
         <option value="all" <?php selected( 'all', $current_val ); ?>><?php _e( 'All Types', 'sws-manage-items' ); ?></option>
         <?php foreach( $values as $key=>$value ) { ?>
-          <option value="$key" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $value ); ?></option>
+          <option value="<?php echo $key; ?>" <?php selected( $key, $current_val ); ?>><?php echo esc_attr( $value ); ?></option>
         <?php } ?>
       </select>
   <?php }
