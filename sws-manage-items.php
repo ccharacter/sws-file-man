@@ -54,7 +54,8 @@ function sws_manage_items_activate() {
   }
   
 	if ( current_user_can( 'activate_plugins' ) && function_exists('acf_add_local_field_group') ) { 
-		sws_manage_items_create_acfgroup(); 
+		$field_groups = get_posts(array('post_type'=>'acf-field-group'))) {
+		error_log(print_r($field_groups,true),0);
 	} else { error_log("No ACF Field",true); }
   
   if ( current_user_can( 'activate_plugins' ) && ! class_exists( 'GFCommon' ) ) {
