@@ -62,22 +62,22 @@ register_activation_hook( __FILE__, 'sws_manage_items_activate' );
 add_action( 'init', 'sws_manage_items_cpt_init' );
 function sws_manage_items_cpt_init() {
 	$labelsCL = array(
- 		'name' => 'Documents',
-    	'singular_name' => 'Document',
-    	'add_new' => 'Add New Document',
-    	'add_new_item' => 'Add New Document',
-    	'edit_item' => 'Edit Document',
-    	'new_item' => 'New Document',
-    	'all_items' => 'All Documents',
-    	'view_item' => 'View Documents',
-    	'search_items' => 'Search Documents',
-    	'not_found' =>  'No Document',
-    	'not_found_in_trash' => 'No Documents found in Trash', 
+ 		'name' => 'Items',
+    	'singular_name' => 'Item',
+    	'add_new' => 'Add New Item',
+    	'add_new_item' => 'Add New Item',
+    	'edit_item' => 'Edit Item`',
+    	'new_item' => 'New Item',
+    	'all_items' => 'All Items',
+    	'view_item' => 'View Items',
+    	'search_items' => 'Search Items',
+    	'not_found' =>  'No Item',
+    	'not_found_in_trash' => 'No Items found in Trash', 
     	'parent_item_colon' => '',
-    	'menu_name' => 'MyDocs'
+    	'menu_name' => 'ManageItems'
     );
     //register post type
-	register_post_type( 'myfile', array(
+	register_post_type( 'item', array(
 		'labels' => $labelsCL,
 		'hierarchical' => true,
 		'has_archive' => true,
@@ -88,7 +88,7 @@ function sws_manage_items_cpt_init() {
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
 		'menu_icon' => 'dashicons-media-document',
-		'rewrite' => array( 'slug' => 'myfiles' ),
+		'rewrite' => array( 'slug' => 'items' ),
 		)
 	);
 
