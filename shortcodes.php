@@ -42,8 +42,8 @@ function sws_mg_items_display_func($atts) {
 		?><ul><?php
 
 		while ( $myItems->have_posts() ) :
-			$myItem->the_post();
-		?><li><a href="<?php echo get_field('mgr_url'); ?>" target='_blank'><?php echo $myItem->post_title; ?></a></li><?php
+			$myItems->the_post();
+		?><li><a href="<?php echo get_field('mgr_url'); ?>" target='_blank'><?php echo get_the_title(); ?></a></li><?php
 		endwhile;
 	
 		?></ul><?php
