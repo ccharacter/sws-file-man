@@ -27,6 +27,7 @@ function sws_mg_items_display_func($atts) {
 				)
 			),
 	);
+	echo "TEST THIS";
 	
 	$myItems = new WP_Query($args);
 
@@ -34,7 +35,7 @@ function sws_mg_items_display_func($atts) {
 	if ($myItems->have_posts() ) :
 	
 	
-?><h4><?php echo $a['list_title']; ?></h4><?php	
+?>TEST THIS<h4><?php echo $a['list_title']; ?></h4><?php	
 
 
 	switch($a['mgr_type']) {
