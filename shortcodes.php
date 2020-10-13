@@ -12,7 +12,7 @@ function sws_mg_items_display_func($atts) {
 	  'sort_order' => 'DESC',
 	  'limit' => 15
 	), $atts);
-	$itemID=$a['item_id']; // NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
+	// NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
 	
 	$args =  array( 
 		'post_type'			=> 'item',
