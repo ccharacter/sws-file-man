@@ -27,11 +27,10 @@ function sws_mg_items_display_func($atts) {
 				)
 			),
 	);
-	echo "TEST THIS";
 	
 	$myItems = new WP_Query($args);
 
-	ob_start();	
+	//ob_start();	
 	if ($myItems->have_posts() ) :
 	
 	
@@ -51,7 +50,7 @@ function sws_mg_items_display_func($atts) {
 		break;
 	}
 
-	ob_end_clean();
+	//ob_end_clean();
 
 	endif;
 
