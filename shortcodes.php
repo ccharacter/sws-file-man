@@ -42,7 +42,7 @@ function sws_mg_items_display_func($atts) {
 			
 			while ( $myItems->have_posts() ) :
 				$myItems->the_post();
-			$mytext.="<li><a href=\".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a></li>";
+				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a></li>";
 			
 			endwhile;
 		
