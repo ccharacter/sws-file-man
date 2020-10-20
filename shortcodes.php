@@ -52,7 +52,7 @@ function sws_mg_items_display_func($atts) {
 
 	endif;
 	
-	$myCats=wp_list_categories( array('hide_title_if_empty'=>true,'show_count'=>1,'echo'=>0));
+	$myCats=wp_list_categories( array('hide_title_if_empty'=>true,'show_count'=>1,'echo'=>0,'exclude'=>"1",'show_option_all'=>"SEE ALL"));
 	
 	return $mytext."<hr />".$myCats;
 }
