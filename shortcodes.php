@@ -52,7 +52,7 @@ function sws_mg_items_display_func($atts) {
 
 	endif;
 	
-	$mytext.=wp_list_categories();
+	wp_list_categories( array('hide_title_if_empty'=>true,'show_count'=>1));
 	
 	return $mytext;
 }
