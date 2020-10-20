@@ -33,7 +33,7 @@ function sws_mg_items_display_func($atts) {
 	//ob_start();	
 	if ($myItems->have_posts() ) :
 	
-		$mytext="<h4>".$a['list_title']."</h4>";	
+		$mytext="<h3 class='c-block__heading-title u-theme--color--darker'>".$a['list_title']."</h3>";	
 
 
 	switch($a['mgr_type']) {
