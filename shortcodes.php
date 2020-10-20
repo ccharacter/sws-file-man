@@ -33,27 +33,28 @@ function sws_mg_items_display_func($atts) {
 	//ob_start();	
 	if ($myItems->have_posts() ) :
 	
-	
-?>TEST THIS<h4><?php echo $a['list_title']; ?></h4><?php	
+		$mytext="<h4>".$a['list_title']."</h4>";	
 
 
 	switch($a['mgr_type']) {
 		default:
-		?><ul><?php
-
-		while ( $myItems->have_posts() ) :
-			$myItems->the_post();
-		?><li><a href="<?php echo get_field('mgr_url'); ?>" target='_blank'><?php echo get_the_title(); ?></a></li><?php
-		endwhile;
-	
-		?></ul><?php
+			$mytext.="<ul>";
+			
+			while ( $myItems->have_posts() ) :
+				$myItems->the_post();
+			$mytext.="<li><a href=\".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a></li>";
+			
+			endwhile;
+		
+			$mytext.="</ul>";
 		break;
 	}
 
-	//ob_end_clean();
-
 	endif;
-
+	
+	$mytext.=wp_list_categories();
+	
+	return $mytext;
 }
 
 // register shortcode
