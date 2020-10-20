@@ -52,9 +52,9 @@ function sws_mg_items_display_func($atts) {
 
 	endif;
 	
-	wp_list_categories( array('hide_title_if_empty'=>true,'show_count'=>1));
+	$myCats=wp_list_categories( array('hide_title_if_empty'=>true,'show_count'=>1,'echo'=>0));
 	
-	return $mytext;
+	return $mytext."<hr />".$myCats;
 }
 
 // register shortcode
