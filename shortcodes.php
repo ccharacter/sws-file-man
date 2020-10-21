@@ -43,9 +43,11 @@ function sws_mg_items_display_func($atts) {
 		default:
 			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul'>"; }
 			while ( $myItems->have_posts() ) :
-				if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
-						
+				
 				$myItems->the_post();
+				
+				if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
+				
 				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a>$dtext</li>";
 			
 			endwhile;
