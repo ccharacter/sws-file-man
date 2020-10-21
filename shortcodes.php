@@ -19,7 +19,7 @@ function sws_mg_items_display_func($atts) {
 	
 	$args =  array( 
 		'post_type'			=> 'item',
-		'posts_per_page' 	=> $a['itemlimit'],
+		'posts_per_page' 	=> $a['item_limit'],
 		'order' 			=> $a['sort_order'],
 		'orderby' 			=> $a['sort_by'],
 		'meta_query'		=> array (
@@ -42,8 +42,9 @@ function sws_mg_items_display_func($atts) {
 	switch($a['mgr_type']) {
 		default:
 			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul'>"; }
-			if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
 			while ( $myItems->have_posts() ) :
+				if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
+						
 				$myItems->the_post();
 				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a>$dtext</li>";
 			
