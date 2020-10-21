@@ -38,7 +38,7 @@ function sws_mg_items_display_func($atts) {
 
 	switch($a['mgr_type']) {
 		default:
-			$mytext.="<ul class='sws-ul>";
+			//$mytext.="<ul class='sws-ul>";
 			
 			while ( $myItems->have_posts() ) :
 				$myItems->the_post();
@@ -46,7 +46,7 @@ function sws_mg_items_display_func($atts) {
 			
 			endwhile;
 		
-			$mytext.="</ul>";
+			//$mytext.="</ul>";
 		break;
 	}
 
@@ -54,7 +54,7 @@ function sws_mg_items_display_func($atts) {
 	
 	$myCats=wp_list_categories( array('depth'=>5,'hide_title_if_empty'=>true,'show_count'=>1,'echo'=>0,'exclude'=>"1",'show_option_all'=>"SEE ALL",'title_li'=>''));
 	
-	return $mytext."<hr />".$myCats;
+	return $mytext."<br /><hr /><br /><h3 class='c-block__heading-title u-theme--color--darker'>View Posts by Category</h3>".$myCats;
 }
 
 // register shortcode
