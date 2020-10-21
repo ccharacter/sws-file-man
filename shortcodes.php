@@ -48,7 +48,7 @@ function sws_mg_items_display_func($atts) {
 				
 				if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
 				
-				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a>$dtext</li>";
+				$mytext.="<li class='sws-li'><a href=\"".get_field('mgr_url')."\" target='_blank'>".wp_trim_words(get_the_title(),$a['word_limit'])."</a>$dtext</li>";
 			
 			endwhile;
 		
@@ -72,7 +72,7 @@ function sws_mg_items_cat_func($atts) {
 	  'show_count' => 1,
 	  'hide_empty' => true,
 	  'depth' => 5,
-	  'show_option_all' => 'SEE ALL',
+	  'show_option_all' => 'VIEW ALL',
 	  'exclude' => "1",
 	  'limit' => 15
 	), $atts);
