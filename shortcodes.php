@@ -5,18 +5,21 @@
 // SHORTCODE FOR Displaying Items
 function sws_mg_items_display_func($atts) {
 	$a=shortcode_atts(array(
-	  'list_title' => 'In Other News...',
-	  'mgr_type' => 'link',
-	  'category' => 'covid-19',
-	  'sort_by' => 'post_date',
-	  'sort_order' => 'DESC',
-	  'limit' => 15
+	  'list_title' 	=> 'In Other News...',
+	  'mgr_type' 	=> 'link',
+	  'category' 	=> 'covid-19',
+	  'sort_by' 	=> 'post_date',
+	  'show_date' 	=> 'N',
+	  'in_ul'		=> 'N',
+	  'sort_order' 	=> 'DESC',
+	  'word_limit'	=> 30,
+	  'item_limit' => 15
 	), $atts);
 	// NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
 	
 	$args =  array( 
 		'post_type'			=> 'item',
-		'posts_per_page' 	=> $a['limit'],
+		'posts_per_page' 	=> $a['itemlimit'],
 		'order' 			=> $a['sort_order'],
 		'orderby' 			=> $a['sort_by'],
 		'meta_query'		=> array (
@@ -38,15 +41,15 @@ function sws_mg_items_display_func($atts) {
 
 	switch($a['mgr_type']) {
 		default:
-			//$mytext.="<ul class='sws-ul>";
-			
+			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul>"; }
+			if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
 			while ( $myItems->have_posts() ) :
 				$myItems->the_post();
-				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a></li>";
+				$mytext.="<li><a href=\"".get_field('mgr_url')."\" target='_blank'>".get_the_title()."</a>$dtext</li>";
 			
 			endwhile;
 		
-			//$mytext.="</ul>";
+			if ($a['in_ul']=="Y") { $mytext.="</ul>"; }
 		break;
 	}
 
