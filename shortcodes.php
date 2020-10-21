@@ -10,7 +10,7 @@ function sws_mg_items_display_func($atts) {
 	  'category' 	=> 'covid-19',
 	  'sort_by' 	=> 'post_date',
 	  'show_date' 	=> 'N',
-	  'in_ul'		=> 'N',
+	  'in_ul'		=> 'Y',
 	  'sort_order' 	=> 'DESC',
 	  'word_limit'	=> 30,
 	  'item_limit' => 15
@@ -41,7 +41,7 @@ function sws_mg_items_display_func($atts) {
 
 	switch($a['mgr_type']) {
 		default:
-			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul>"; }
+			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul'>"; }
 			if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
 			while ( $myItems->have_posts() ) :
 				$myItems->the_post();
