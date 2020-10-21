@@ -52,9 +52,7 @@ function sws_mg_items_display_func($atts) {
 
 	endif;
 	
-	$myCats=wp_list_categories( array('depth'=>5,'hide_title_if_empty'=>true,'show_count'=>1,'echo'=>0,'exclude'=>"1",'show_option_all'=>"SEE ALL",'title_li'=>''));
-	
-	return $mytext."<br /><hr /><br /><h3 class='c-block__heading-title u-theme--color--darker'>View Posts by Category</h3>".$myCats;
+	return $mytext;
 }
 
 // register shortcode
