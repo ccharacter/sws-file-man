@@ -114,7 +114,7 @@ function sws_manage_filter_by() {
   global $typenow;
   global $wp_query;
     if ( $typenow == 'item' ) { // Your custom post type slug
-      $values = array( 'doc'=>"Documents", 'vid'=>"Videos", 'link'=>"Links",'resrc'=>"Resources" ); // Options for the filter select field
+      $values = array( 'document'=>"Documents", 'video'=>"Videos", 'link'=>"Links",'resource'=>"Resources" ); // Options for the filter select field
       $current_val = '';
       if( isset( $_GET['item_type'] ) ) {
         $current_val = $_GET['item_type']; // Check if option has been selected
@@ -164,10 +164,10 @@ add_action('manage_item_posts_custom_column', function($column_key, $post_id) {
 		$item_type = get_post_meta($post_id, 'mgr_type', true);
 		if ($item_type) {
 			switch($item_type) {
-				case("doc"): echo "Document"; break;
+				case("document"): echo "Document"; break;
 				case("link"): echo "Link"; break;
-				case("vid"): echo "Video"; break;
-				case("resrc"): echo "Resource"; break;
+				case("video"): echo "Video"; break;
+				case("resource"): echo "Resource"; break;
 				default: break;
 			}
 		}
