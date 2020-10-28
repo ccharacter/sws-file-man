@@ -82,7 +82,7 @@ function sws_mg_items_cat_func($atts) {
 	), $atts);
 	// NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
 	
-	$mytext="<div class='".$a['container_class']."'><h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";	
+	$mytext="<div class='".$a['container_class']."'>    <input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1\]"><h3 class='".$a['heading_class']."'>".$a['list_title']."</h3></label>";	
 	
 	$mytext.="<div class='".$a['subcontainer_class']."'><ul class='".$a['ul_class']."'>"; 
 	
