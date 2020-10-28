@@ -85,7 +85,7 @@ function sws_mg_items_cat_func($atts) {
 	$mytext="<div class='".$a['container_class']."'>";
 
 	if ($a['container_class']=="sws-accordion") { 
-		$mytext.="<input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1]\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
+		$mytext.="<input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
 	else { 
 		$mytext.="<h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";
 	}
