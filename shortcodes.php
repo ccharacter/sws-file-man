@@ -11,6 +11,7 @@ function sws_mg_items_display_func($atts) {
 	  'sort_by' 	=> 'post_date',
 	  'show_date' 	=> 'N',
 	  'show_option_all' => 'VIEW ALL',
+	  'show_all_link' => '/current/news-archive/other-stories/',
 	  'sort_order' 	=> 'DESC',
 	  'word_limit'	=> 30,
 	  'heading_class' => "c-block__heading-title u-theme--color--darker",
@@ -65,7 +66,7 @@ function sws_mg_items_display_func($atts) {
 		break;
 	}
 
-	if (!($a['show_option_all']=="")) { $mytext.="<li>".$a['show_option_all']."<li>";}
+	if (!($a['show_option_all']=="")) { $mytext.="<li><a href='".$a['show_all_link']."'>".$a['show_option_all']."</a><li>";}
 
 	$mytext.="</ul></div></div>";
 	endif;
