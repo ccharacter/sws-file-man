@@ -10,9 +10,12 @@ function sws_mg_items_display_func($atts) {
 	  'category' 	=> 'covid-19',
 	  'sort_by' 	=> 'post_date',
 	  'show_date' 	=> 'N',
-	  'in_ul'		=> 'Y',
 	  'sort_order' 	=> 'DESC',
 	  'word_limit'	=> 30,
+	  'heading_class' => "c-block__heading-title u-theme--color--darker",
+	  'container_class' => "sws-accordion",
+	  'subcontainer_class' => 'sws-acc-content',
+	  'ul_class' => "sws-ul",
 	  'item_limit' => 15
 	), $atts);
 	// NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
@@ -36,12 +39,18 @@ function sws_mg_items_display_func($atts) {
 	//ob_start();	
 	if ($myItems->have_posts() ) :
 	
-		$mytext="<h3 class='c-block__heading-title u-theme--color--darker'>".$a['list_title']."</h3>";	
+	$mytext="<div class='".$a['container_class']."'>";
 
+	if ($a['container_class']=="sws-accordion") { 
+		$mytext.="<input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
+	else { 
+		$mytext.="<h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";
+	}
+	
+	$mytext.="<div class='".$a['subcontainer_class']."'><ul class='".$a['ul_class']."'>"; 
 
 	switch($a['mgr_type']) {
 		default:
-			if ($a['in_ul']=="Y") { $mytext.="<ul class='sws-ul'>"; }
 			while ( $myItems->have_posts() ) :
 				
 				$myItems->the_post();
@@ -52,10 +61,10 @@ function sws_mg_items_display_func($atts) {
 			
 			endwhile;
 		
-			if ($a['in_ul']=="Y") { $mytext.="</ul>"; }
 		break;
 	}
 
+	$mytext.="</ul></div></div>";
 	endif;
 	
 	return $mytext;
