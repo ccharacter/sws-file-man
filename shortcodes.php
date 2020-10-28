@@ -10,6 +10,7 @@ function sws_mg_items_display_func($atts) {
 	  'category' 	=> 'covid-19',
 	  'sort_by' 	=> 'post_date',
 	  'show_date' 	=> 'N',
+	  'show_option_all' => 'VIEW ALL',
 	  'sort_order' 	=> 'DESC',
 	  'word_limit'	=> 30,
 	  'heading_class' => "c-block__heading-title u-theme--color--darker",
@@ -63,6 +64,8 @@ function sws_mg_items_display_func($atts) {
 		
 		break;
 	}
+
+	if (!($a['show_option_all']=="")) { $mytext.="<li>".$a['show_option_all']."<li>";}
 
 	$mytext.="</ul></div></div>";
 	endif;
