@@ -38,11 +38,11 @@ function sws_mg_items_display_func($atts) {
 
 	//ob_start();	
 	if ($myItems->have_posts() ) :
-	
+	$rnd=rand(1000,9999);
 	$mytext="<div class='".$a['container_class']."'>";
 
 	if ($a['container_class']=="sws-accordion") { 
-		$mytext.="<input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
+		$mytext.="<input type=\"checkbox\" id=\"toggle$rnd\" class=\"sws-acc-ck\" /><label for=\"toggle$rnd\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
 	else { 
 		$mytext.="<h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";
 	}
@@ -92,9 +92,10 @@ function sws_mg_items_cat_func($atts) {
 	// NOTE TO SELF: SHORTCODE_ATTS DOESN'T LIKE UPPERCASE!!!!
 	
 	$mytext="<div class='".$a['container_class']."'>";
+	$rnd=rand(1000,9999);
 
 	if ($a['container_class']=="sws-accordion") { 
-		$mytext.="<input type=\"checkbox\" id=\"toggle1\" class=\"sws-acc-ck\" /><label for=\"toggle1\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
+		$mytext.="<input type=\"checkbox\" id=\"toggle$rnd\" class=\"sws-acc-ck\" /><label for=\"toggle$rnd\" class='".$a['heading_class']."'>".$a['list_title']."</label>";	}
 	else { 
 		$mytext.="<h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";
 	}
