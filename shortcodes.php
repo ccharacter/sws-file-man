@@ -74,7 +74,7 @@ function sws_mg_items_cat_func($atts) {
 	  'depth' => 5,
 	  'show_option_all' => 'VIEW ALL',
 	  'exclude' => "1",
-	  'heading_class' ="c-block__heading-title u-theme--color--darker",
+	  'heading_class' => "c-block__heading-title u-theme--color--darker",
 	  'container_class' => "",
 	  'limit' => 15
 	), $atts);
