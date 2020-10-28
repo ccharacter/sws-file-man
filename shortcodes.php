@@ -84,7 +84,7 @@ function sws_mg_items_cat_func($atts) {
 	
 	$mytext="<div class='".$a['container_class']."'><h3 class='".$a['heading_class']."'>".$a['list_title']."</h3>";	
 	
-	$mytext.="<div class='".$a['subcontainer_class']."'><ul class='".$a['ul_class'>"; 
+	$mytext.="<div class='".$a['subcontainer_class']."'><ul class='".$a['ul_class']."'>"; 
 	
 	$myCats=wp_list_categories( array('depth'=>$a['depth'],'hide_title_if_empty'=>$a['hide_empty'],'show_count'=>$a['show_count'],'echo'=>0,'exclude'=>$a['exclude'],'show_option_all'=>$a['show_option_all'],'title_li'=>''));
 	
