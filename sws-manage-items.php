@@ -200,7 +200,7 @@ function sws_list_categories_for_post_type($post_type, $args) {
         if (empty($posts))
             // ...add category to exclude list
             if (strlen($exclude)>0) { $exclude.=","; }
-			$exclude. = $category->cat_ID;
+			$exclude.= $category->cat_ID;
     }
 
     // Set up args
