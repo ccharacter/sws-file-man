@@ -187,8 +187,8 @@ function sws_fileman_rewrite_flush() {
 add_action( 'after_switch_theme', 'sws_fileman_rewrite_flush' );
 
 
-function sws_list_categories_for_post_type($post_type, $args = '') {
-    $exclude = array();
+function sws_list_categories_for_post_type($post_type, $args) {
+    if (isset($args['exclude'])) { $exclude=$args['exclude'];} else { $exclude="";}
 
     // Check ALL categories for posts of given post type
     foreach (get_categories() as $category) {
@@ -197,13 +197,15 @@ function sws_list_categories_for_post_type($post_type, $args = '') {
         // If no posts found, ...
         if (empty($posts))
             // ...add category to exclude list
-            $exclude[] = $category->cat_ID;
+            if (strlen($exclude)>0) { $exclude.=","; }
+			$exclude. = $category->cat_ID;
     }
 
     // Set up args
     if (! empty($exclude)) {
-        $args .= ('' === $args) ? '' : '&';
-        $args .= 'exclude='.implode(',', $exclude);
+        //$args .= ('' === $args) ? '' : '&';
+        //$args .= 'exclude='.implode(',', $exclude);
+		$args['exclude']=$exclude;
     }
 
     // List categories
