@@ -207,7 +207,7 @@ function sws_list_categories_for_post_type($post_type, $args = '') {
     }
 
     // List categories
-    wp_list_categories($args);
+    return wp_list_categories($args);
 }
 
 
