@@ -57,7 +57,7 @@ function sws_mg_items_display_func($atts) {
 				
 				$myItems->the_post();
 				
-				if ($a['show_date']=="Y") { $dtext=" (".get_the_date("m J Y").")";} else {$dtext="";}
+				if ($a['show_date']=="Y") { $dtext=" (".get_the_date("j M Y").")";} else {$dtext="";}
 				
 				$mytext.="<li class='sws-li'><a href=\"".get_field('mgr_url')."\" target='_blank'>".wp_trim_words(get_the_title(),$a['word_limit'])."</a>$dtext</li>";
 			
