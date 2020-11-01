@@ -8,7 +8,7 @@ function sws_mg_items_display_func($atts) {
 	  'list_title' 	=> 'In Other News...',
 	  'mgr_type' 	=> 'link',
 	  'category' 	=> 'covid-19',
-	  'sort_by' 	=> 'post_date',
+	  'sort_by' 	=> 'publish_date',
 	  'show_date' 	=> 'N',
 	  'show_option_all' => 'VIEW ALL',
 	  'show_all_link' => '/current/news-archive/other-stories/',
@@ -57,7 +57,7 @@ function sws_mg_items_display_func($atts) {
 				
 				$myItems->the_post();
 				
-				if ($a['show_date']=="Y") { $dtext=" (".get_field('mgr_date').")";} else {$dtext="";}
+				if ($a['show_date']=="Y") { $dtext=" (".get_the_date("m J Y").")";} else {$dtext="";}
 				
 				$mytext.="<li class='sws-li'><a href=\"".get_field('mgr_url')."\" target='_blank'>".wp_trim_words(get_the_title(),$a['word_limit'])."</a>$dtext</li>";
 			
