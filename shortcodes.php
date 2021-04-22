@@ -11,7 +11,7 @@ function sws_mg_items_display_func($atts) {
 	  'sort_by' 	=> 'publish_date',
 	  'show_date' 	=> 'N',
 	  'show_option_all' => 'VIEW ALL',
-	  'show_all_link' => '/current/news-archive/other-stories/',
+	  'show_all_link' => '/news-archive/other-stories/',
 	  'sort_order' 	=> 'DESC',
 	  'word_limit'	=> 30,
 	  'heading_class' => "c-block__heading-title u-theme--color--darker",
