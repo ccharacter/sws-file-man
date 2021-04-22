@@ -119,4 +119,7 @@ function sws_mg_items_cat_func($atts) {
 // register shortcode
 add_shortcode('sws_display_categories', 'sws_mg_items_cat_func'); 
 
+
+
+
 ?>
