@@ -12,14 +12,8 @@
 	"author": "Sharon Stromberg",
 	"author_homepage": "http://ccharacter.com/",
 
-	"sections": [
-		{
-			"description": "This plugin is creates a utility for managing uploads, videos, and links. It allows for...<ul style='line-height:.8'><li>Uploading via Gravity Forms</li><li>Displaying uploads by tag</li><li>Commenting on files</li></ul>"
-			},
-			{
-			"shortcodes": "TEST"
-		}
-
-	]
+	"sections": {
+		"description": "This plugin is creates a utility for managing uploads, videos, and links. It allows for...<ul style='line-height:.8'><li>Uploading via Gravity Forms</li><li>Displaying uploads by tag</li><li>Commenting on files</li></ul><hr />TEST"
+	}
 
 }
