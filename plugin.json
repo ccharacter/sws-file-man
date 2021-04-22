@@ -1,11 +1,11 @@
 {
 	"name": "SWS Manage Items",
-	"version": "1.0",
-	"download_url": "https://github.com/ccharacter/sws-manage-items/archive/v1.0.zip",
+	"version": "1.52",
+	"download_url": "https://github.com/ccharacter/sws-manage-items/archive/v1.52.zip",
 
 	"homepage": "https://ccharacter.com/custom-plugins/sws-manage-items/",
-	"requires": "4.0",
-	"tested": "5.4.1",
+	"requires": "5.7",
+	"tested": "5.7.1",
 	"last_updated": "2020-07-19",
 	"upgrade_notice": "Keeping up with the lastest version means fewer errors.",
 

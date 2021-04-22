@@ -4,8 +4,8 @@
  * Plugin Name:       SWS ManageItems
  * Plugin URI:        https://ccharacter.com/custom-plugins/sws-manage-items/
  * Description:       Manage and display uploaded files, links, or videos
- * Version:           1.0
- * Requires at least: 5.2
+ * Version:           1.52
+ * Requires at least: 5.7
  * Requires PHP:      5.5
  * Author:            Sharon Stromberg
  * Author URI:        https://ccharacter.com/
