@@ -25,6 +25,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 require_once plugin_dir_path(__FILE__).'func_fields.php';
 require_once plugin_dir_path(__FILE__).'shortcodes.php';
+require_once plugin_dir_path(__FILE__).'acf_field_group.php';
 
 //require_once plugin_dir_path(__FILE__).'/inc/import_acf_field_group.php';
 //require_once plugin_dir_path(__FILE__).'duplicate_pages.php';
